@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il tuo percorso personalizzato per sentirti al top · Fitline Italia</title>
+<meta name="description" content="Mini-assessment gratuito di 10 domande: scopri in 2 minuti il percorso di integrazione e skincare cucito sui tuoi obiettivi. Made in Germany, claim EFSA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fafaf9;--card:#fff;--text:#1a1a1a;--muted:#6b6b6b;--border:#e7e5e4;
+  --accent:#0a7d4d;--accent-dark:#075e3a;--accent-soft:#e6f4ec;
+  --shadow:0 4px 16px rgba(0,0,0,.06);
+  --radius:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+
+.hero{background:linear-gradient(135deg,#0a7d4d 0%,#0d9660 100%);color:#fff;padding:48px 20px 40px;text-align:center}
+.hero .eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:.1em;opacity:.9;margin-bottom:14px;font-weight:600}
+.hero h1{font-size:clamp(28px,5vw,42px);font-weight:800;line-height:1.15;letter-spacing:-.02em;margin-bottom:14px}
+.hero h1 em{font-style:normal;background:rgba(255,255,255,.18);padding:2px 8px;border-radius:6px}
+.hero p{font-size:clamp(15px,2vw,18px);opacity:.95;max-width:560px;margin:0 auto 20px}
+.hero .badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px;font-size:12px;opacity:.92}
+.hero .badges span{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:4px}
+
+section{padding:48px 0}
+section h2{font-size:clamp(22px,3.5vw,28px);font-weight:700;margin-bottom:8px;letter-spacing:-.01em;text-align:center}
+section .sub{color:var(--muted);text-align:center;margin-bottom:32px;font-size:15px;max-width:560px;margin-left:auto;margin-right:auto}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:24px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 20px;text-align:center;box-shadow:var(--shadow)}
+.step .num{width:48px;height:48px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;margin:0 auto 14px}
+.step h3{font-size:16px;font-weight:600;margin-bottom:6px}
+.step p{font-size:14px;color:var(--muted)}
+
+.reasons{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:24px}
+.reason{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.reason .icon{font-size:24px;margin-bottom:10px;display:block}
+.reason h3{font-size:15px;font-weight:600;margin-bottom:6px}
+.reason p{font-size:13px;color:var(--muted)}
+
+.form-section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow);margin-top:24px}
+.form-section h2{margin-bottom:6px;text-align:left}
+.form-section .sub{text-align:left;margin-left:0;margin-bottom:20px}
+.form-row{margin-bottom:14px}
+.form-row label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--text)}
+.form-row input,.form-row select{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:8px;font-size:15px;font-family:inherit;background:#fff;transition:border .15s}
+.form-row input:focus,.form-row select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.form-row .checkbox{display:flex;align-items:start;gap:8px;font-size:12px;color:var(--muted);font-weight:400;line-height:1.5}
+.form-row .checkbox input{width:auto;margin-top:3px;flex-shrink:0}
+.form-cta{display:block;width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .15s;margin-top:8px}
+.form-cta:hover{background:var(--accent-dark)}
+.form-cta:disabled{opacity:.6;cursor:wait}
+.form-note{font-size:11px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.5}
+
+.subm-status{margin-top:14px;padding:10px 12px;border-radius:6px;font-size:13px;display:none}
+.subm-status.ok{background:var(--accent-soft);color:var(--accent-dark);display:block}
+.subm-status.warn{background:#fef3c7;color:#92400e;display:block}
+.subm-status.err{background:#fee2e2;color:#991b1b;display:block}
+
+footer{padding:32px 0;border-top:1px solid var(--border);background:#fff;font-size:12px;color:var(--muted);text-align:center;margin-top:48px}
+footer a{color:var(--accent);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+@media(max-width:480px){
+  .hero{padding:36px 16px 32px}
+  .hero h1{font-size:26px}
+  .hero p{font-size:14px}
+  section{padding:36px 0}
+  .step{padding:18px 14px}
+  .form-section{padding:20px 16px}
+  .badges span{font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Percorso personalizzato Fitline</div>
+    <h1>Il tuo percorso per <em>sentirti al top</em> — costruito sui tuoi obiettivi.</h1>
+    <p>10 domande, 2 minuti. Output: percorso + 1 prodotto starter + consulenza gratuita 1:1 su WhatsApp. Made in Germany, claim EFSA, zero pressione.</p>
+    <div class="badges">
+      <span>🇩🇪 Made in Germany</span>
+      <span>🧪 Claim EFSA</span>
+      <span>⚙️ Tecnologia NTC® brevettata</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Come funziona</h2>
+    <p class="sub">3 passi, 2-15 minuti in totale. Esci con un percorso cucito addosso, non un consiglio generico.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Assessment</h3>
+        <p>10 domande rapide: obiettivo, problemi, stile di vita, allergie, esperienza, budget.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Percorso su misura</h3>
+        <p>Output: 3 livelli di percorso + 1 prodotto starter. Spiegato in linguaggio semplice.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Consulenza 1:1</h3>
+        <p>15 min su WhatsApp per chiarire dubbi e decidere se procedere. Zero impegno.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#f5f5f4">
+  <div class="wrap">
+    <h2>Perché Fitline</h2>
+    <p class="sub">4 cose che puoi verificare in 30 secondi prima di fidarti.</p>
+    <div class="reasons">
+      <div class="reason">
+        <span class="icon">🇩🇪</span>
+        <h3>Made in Germany</h3>
+        <p>Sviluppata e prodotta da PM-International AG (Germania, fondata 1993). Certificazioni GMP di qualità farmaceutica.</p>
+      </div>
+      <div class="reason">
+        <span class="icon">⚙️</span>
+        <h3>Tecnologia NTC® brevettata</h3>
+        <p>Nutrient Transport Concept: formulazione che il produttore dichiara studiata per portare i nutrienti a livello cellulare al momento giusto.</p>
+      </div>
+      <div class="reason">
+        <span class="icon">🧪</span>
+        <h3>Registrata anche TGA Australia</h3>
+        <p>Il prodotto è registrato presso l'ente regolatorio australiano (ARTG 461894), uno dei più severi al mondo extra-UE.</p>
+      </div>
+      <div class="reason">
+        <span class="icon">📋</span>
+        <h3>Claim EFSA di benessere</h3>
+        <p>Vitamine B, C, magnesio, ferro, selenio, zinco con claim di benessere autorizzati (supporto immunitario, riduzione stanchezza, funzione psicologica).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="form-section">
+      <h2>Inizia da qui</h2>
+      <p class="sub">Compila e ti contatto entro 24h su WhatsApp con il tuo output personalizzato.</p>
+      <form id="lead-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" required placeholder="Come ti chiami">
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="per inviarti il report">
+        </div>
+        <div class="form-row">
+          <label for="whatsapp">WhatsApp</label>
+          <input type="tel" id="whatsapp" name="whatsapp" required placeholder="+39 333 1234567" pattern="[\+0-9\s]{8,}">
+        </div>
+        <div class="form-row">
+          <label for="obiettivo">Il tuo obiettivo principale</label>
+          <select id="obiettivo" name="obiettivo" required>
+            <option value="">Seleziona…</option>
+            <option value="energia">Energia / focus / gestione stress</option>
+            <option value="benessere">Benessere quotidiano / supporto immunitario</option>
+            <option value="dolori">Dolori articolari / mobilità</option>
+            <option value="dimagrimento">Dimagrimento / ricomposizione corporea</option>
+            <option value="inestetismi">Inestetismi (cellulite, ritenzione)</option>
+            <option value="massa">Massa muscolare / performance sportiva</option>
+            <option value="pelle">Bellezza viso e pelle / skincare coreana</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="checkbox">
+            <input type="checkbox" id="gdpr" name="gdpr" required>
+            <span id="gdpr-text">Acconsento a ricevere comunicazioni WhatsApp/email ai sensi del GDPR per ricevere il mio percorso personalizzato. Posso revocare il consenso in qualsiasi momento scrivendo "stop".</span>
+          </label>
+        </div>
+        <button type="submit" class="form-cta" id="submit-btn">Inizia l'assessment personalizzato →</button>
+        <p class="form-note">I dati sono salvati sul tuo browser e (se hai dato il consenso) inviati al consulente via Google Sheets/email. Mai condivisi con terze parti.</p>
+        <div class="subm-status" id="subm-status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong id="brand-name">Fitline Italia</strong> · Consulente indipendente con eShop ufficiale · <a href="#" id="eshop-link">20942218.fitline.com</a></p>
+    <p style="margin-top:6px">Claim di benessere conformi al Reg. UE 1924/2006. <a href="#" onclick="alert('Privacy: i dati sono salvati in locale sul tuo browser e (se hai dato consenso) inviati al consulente via Google Sheets/email. Mai condivisi con terze parti.');return false;">Privacy</a> · Per non ricevere più comunicazioni: scrivi "<span id="optout-kw">stop</span>".</p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script>
+// Popola i dati dinamici da config.js
+(function(){
+  const CFG = window.FITLINE_CONFIG;
+  if (CFG){
+    document.getElementById('eshop-link').href = CFG.eShopUrl;
+    document.getElementById('eshop-link').textContent = CFG.eShopUrl.replace('https://','');
+    document.getElementById('gdpr-text').textContent = CFG.consentText;
+    document.getElementById('optout-kw').textContent = CFG.optOutKeyword;
+  }
+})();
+
+// SUBMIT
+async function handleSubmit(e){
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  const statusEl = document.getElementById('subm-status');
+  btn.disabled = true;
+  btn.textContent = 'Invio in corso…';
+  statusEl.className = 'subm-status';
+  statusEl.style.display = 'none';
+
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form));
+  const obiettivoLabel = form.obiettivo.options[form.obiettivo.selectedIndex].text;
+
+  // Pre-compila messaggio WhatsApp con riepilogo
+  const CFG = window.FITLINE_CONFIG;
+  const waMsg =
+`Ciao ${CFG.consultantName}! 👋
+
+Mi sono iscritto/a dal form landing e vorrei iniziare l'assessment personalizzato.
+
+📋 *Riepilogo:*
+• Nome: ${data.nome}
+• Email: ${data.email}
+• WhatsApp: ${data.whatsapp}
+• Obiettivo principale: ${obiettivoLabel}
+
+Quando hai 15 minuti, possiamo vederlo insieme?
+
+— ${CFG.consultantName}, Fitline Italia`;
+
+  // Salva in parallelo
+  const payload = {
+    timestamp: new Date().toISOString(),
+    source: 'landing_form',
+    ...data,
+    obiettivo_label: obiettivoLabel,
+    whatsapp_redirect: CFG.waLink(waMsg)
+  };
+
+  const results = await submitAll(payload);
+  const ok = results.filter(r => r.ok).length;
+  const total = results.length;
+
+  if (ok > 0){
+    statusEl.className = 'subm-status ok';
+    statusEl.textContent = '✓ Dati salvati (' + ok + '/' + total + ' destinazioni: ' + results.map(r=>r.label).join(', ') + '). Ti reindirizziamo all\'assessment…';
+  } else {
+    statusEl.className = 'subm-status warn';
+    statusEl.textContent = '⚠ Invio non riuscito ma i dati sono salvati sul tuo browser. Andiamo avanti con l\'assessment comunque.';
+  }
+
+  // Reindirizza all'assessment con dati pre-compilati
+  setTimeout(() => {
+    const url = new URL(CFG.assessmentUrl, window.location.href);
+    url.searchParams.set('nome', data.nome);
+    url.searchParams.set('email', data.email);
+    url.searchParams.set('whatsapp', data.whatsapp);
+    url.searchParams.set('obiettivo', data.obiettivo);
+    window.location.href = url.toString();
+  }, 1200);
+}
+
+async function submitAll(payload){
+  const CFG = window.FITLINE_CONFIG;
+  const results = [];
+
+  // 1) localStorage
+  try {
+    const history = JSON.parse(localStorage.getItem('fitline_leads') || '[]');
+    history.push(payload);
+    localStorage.setItem('fitline_leads', JSON.stringify(history));
+    results.push({label: 'localStorage', ok: true});
+  } catch(e){
+    results.push({label: 'localStorage', ok: false, err: e.message});
+  }
+
+  // 2) Google Sheets
+  if (CFG.destinations.googleSheets.enabled && CFG.destinations.googleSheets.url){
+    try {
+      await fetch(CFG.destinations.googleSheets.url, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type': 'text/plain'},
+        body: JSON.stringify(payload)
+      });
+      results.push({label: CFG.destinations.googleSheets.label, ok: true});
+    } catch(e){
+      results.push({label: CFG.destinations.googleSheets.label, ok: false, err: e.message});
+    }
+  } else {
+    results.push({label: 'Google Sheets (disabilitato)', ok: true, skipped: true});
+  }
+
+  // 3) Formspree
+  if (CFG.destinations.formspree.enabled && CFG.destinations.formspree.url){
+    try {
+      const formData = new FormData();
+      for (const k in payload){
+        formData.append(k, typeof payload[k] === 'object' ? JSON.stringify(payload[k]) : payload[k]);
+      }
+      const resp = await fetch(CFG.destinations.formspree.url, {
+        method: 'POST',
+        body: formData,
+        headers: {'Accept': 'application/json'}
+      });
+      if (resp.ok) results.push({label: CFG.destinations.formspree.label, ok: true});
+      else results.push({label: CFG.destinations.formspree.label, ok: false, err: 'HTTP ' + resp.status});
+    } catch(e){
+      results.push({label: CFG.destinations.formspree.label, ok: false, err: e.message});
+    }
+  } else {
+    results.push({label: 'Formspree (disabilitato)', ok: true, skipped: true});
+  }
+
+  return results;
+}
+</script>
+</body>
+</html>

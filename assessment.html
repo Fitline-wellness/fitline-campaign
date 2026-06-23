@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini-Assessment personalizzato · Fitline Italia</title>
+<meta name="description" content="10 domande, 2 minuti. Scopri il percorso di integrazione e skincare cucito sui tuoi obiettivi.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fafaf9;--card:#fff;--text:#1a1a1a;--muted:#6b6b6b;--border:#e7e5e4;
+  --accent:#0a7d4d;--accent-dark:#075e3a;--accent-soft:#e6f4ec;
+  --warn:#b45309;--danger:#b91c1c;
+  --shadow:0 4px 16px rgba(0,0,0,.06);
+  --radius:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+.wrap{max-width:640px;margin:0 auto;padding:0 20px;width:100%}
+
+/* Header */
+header{background:#fff;border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;gap:12px}
+header .logo{font-weight:700;color:var(--accent);font-size:16px}
+header .logo-sub{color:var(--muted);font-size:13px;margin-left:auto}
+header a{color:var(--accent);text-decoration:none;font-size:13px}
+
+/* Main card */
+main{flex:1;padding:24px 0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px;box-shadow:var(--shadow);margin-bottom:16px}
+.step-num{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:8px}
+.card h1{font-size:24px;font-weight:700;margin-bottom:6px;line-height:1.2}
+.card h1 small{font-size:14px;font-weight:500;color:var(--muted);display:block;margin-top:4px}
+.card .q{font-size:17px;font-weight:600;margin:18px 0 14px;line-height:1.4}
+.card .help{font-size:13px;color:var(--muted);margin-bottom:14px}
+.options{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all .15s;background:#fff}
+.opt:hover{border-color:var(--accent);background:var(--accent-soft)}
+.opt input{margin-top:3px;cursor:pointer;flex-shrink:0;accent-color:var(--accent)}
+.opt.selected{border-color:var(--accent);background:var(--accent-soft)}
+.opt .lbl{font-size:15px;font-weight:500}
+.opt .sub{font-size:12px;color:var(--muted);margin-top:2px}
+textarea,input[type=text],input[type=email],input[type=tel]{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:15px;font-family:inherit;background:#fff;transition:border .15s}
+textarea{min-height:80px;resize:vertical}
+textarea:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+
+/* Progress */
+.progress{margin-bottom:20px}
+.progress-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);transition:width .3s ease}
+.progress-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:6px}
+
+/* Navigation */
+.nav{display:flex;gap:8px;margin-top:24px;justify-content:space-between}
+.btn{padding:11px 22px;border-radius:8px;font-weight:600;font-size:15px;cursor:pointer;border:none;font-family:inherit;transition:all .15s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-dark)}
+.btn-primary:disabled{background:var(--border);color:var(--muted);cursor:not-allowed}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{background:#f5f5f4}
+.btn-link{background:transparent;color:var(--accent);text-decoration:underline;padding:0;border:none}
+
+/* Intro */
+.intro-hero{text-align:center;padding:8px 0 16px}
+.intro-hero .icon{font-size:48px;margin-bottom:12px}
+.intro-hero h1{font-size:28px;margin-bottom:8px}
+.intro-hero p{color:var(--muted);font-size:15px;max-width:480px;margin:0 auto 16px}
+.intro-bullets{text-align:left;background:var(--accent-soft);border-radius:8px;padding:14px 18px;margin:18px 0;font-size:14px;color:#1a1a1a}
+.intro-bullets li{margin:6px 0;list-style:'✓  ';padding-left:4px}
+.intro-bullets ul{list-style:none;padding:0;margin:0}
+
+/* Output */
+.output-section{margin-bottom:20px}
+.output-section h2{font-size:16px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+.output-section .card{background:#fff}
+/* === OUTPUT MENTALISTA v2 === */
+.rec-hero{background:linear-gradient(135deg,#0a7d4d 0%,#075e3a 100%);color:#fff;border-radius:14px;padding:28px 24px;margin-bottom:18px;box-shadow:0 8px 24px rgba(10,125,77,.18);position:relative;overflow:hidden}
+.rec-hero::before{content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;background:rgba(255,255,255,.06);border-radius:50%}
+.rec-hero::after{content:'';position:absolute;bottom:-40px;left:-20px;width:120px;height:120px;background:rgba(255,255,255,.04);border-radius:50%}
+.rec-hero-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.18em;opacity:.85;margin-bottom:8px;font-weight:600}
+.rec-hero h2{font-size:24px;font-weight:800;line-height:1.2;margin-bottom:10px;position:relative;z-index:1}
+.rec-hero p.lead{font-size:15px;line-height:1.55;opacity:.95;position:relative;z-index:1}
+.rec-hero .hero-icon{font-size:36px;margin-bottom:10px;position:relative;z-index:1}
+
+.problem-block{background:#fff7ed;border-left:4px solid #ea580c;padding:14px 16px;border-radius:0 8px 8px 0;margin-bottom:18px;font-size:14px;line-height:1.6;color:#7c2d12}
+.problem-block strong{color:#9a3412;display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+
+.section-title{font-size:13px;font-weight:700;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.1em;margin:24px 0 12px;display:flex;align-items:center;gap:8px}
+.section-title::before{content:'';flex:0 0 24px;height:2px;background:var(--accent)}
+
+.product-list{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+.product-card{display:flex;gap:14px;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:14px;transition:all .2s}
+.product-card:hover{border-color:var(--accent);box-shadow:0 4px 12px rgba(10,125,77,.08)}
+.product-icon{flex:0 0 48px;height:48px;background:linear-gradient(135deg,var(--accent-soft) 0%,#d1fae5 100%);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px}
+.product-body{flex:1;min-width:0}
+.product-name{font-size:16px;font-weight:700;color:var(--text);margin-bottom:2px}
+.product-tag{font-size:12px;color:var(--accent);font-weight:600;margin-bottom:6px}
+.product-desc{font-size:13.5px;color:#374151;line-height:1.55}
+
+.why-box{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border:1.5px solid #f59e0b;border-radius:12px;padding:18px;margin-bottom:18px;position:relative}
+.why-box-title{font-size:13px;font-weight:700;color:#92400e;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.why-box p{font-size:14px;line-height:1.65;color:#78350f}
+
+.upgrade-box{background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%);border:1.5px dashed #3b82f6;border-radius:12px;padding:18px;margin-bottom:18px;position:relative}
+.upgrade-box-title{font-size:13px;font-weight:700;color:#1e40af;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.upgrade-box p{font-size:14px;line-height:1.65;color:#1e3a8a}
+.upgrade-box strong{color:#1e40af}
+
+.discount-banner{background:linear-gradient(135deg,#dc2626 0%,#b91c1c 100%);color:#fff;border-radius:14px;padding:20px 22px;margin-bottom:18px;box-shadow:0 8px 20px rgba(220,38,38,.25);position:relative;overflow:hidden;animation:pulse-discount 2.5s ease-in-out infinite}
+@keyframes pulse-discount{0%,100%{box-shadow:0 8px 20px rgba(220,38,38,.25)}50%{box-shadow:0 8px 32px rgba(220,38,38,.45)}}
+.discount-banner::before{content:'⏰';position:absolute;top:14px;right:18px;font-size:38px;opacity:.25}
+.discount-banner .db-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.2em;opacity:.9;margin-bottom:6px;font-weight:700}
+.discount-banner .db-title{font-size:22px;font-weight:800;line-height:1.2;margin-bottom:8px}
+.discount-banner .db-sub{font-size:14px;line-height:1.5;opacity:.95}
+.discount-banner strong{background:rgba(255,255,255,.18);padding:2px 6px;border-radius:4px;font-weight:700}
+
+.urgency-line{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid #fecaca;border-radius:8px;padding:10px 14px;margin-top:14px;font-size:13px;color:#991b1b;font-weight:600}
+.urgency-line .dot{width:8px;height:8px;background:#dc2626;border-radius:50%;animation:blink 1.4s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+.cta-section{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:20px;margin-bottom:18px;text-align:center}
+.cta-section .cta-title{font-size:17px;font-weight:700;color:var(--text);margin-bottom:6px}
+.cta-section .cta-sub{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5}
+.wa-cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;background:#25D366;color:#fff;border-radius:10px;font-size:16px;font-weight:700;text-decoration:none;margin-top:18px;transition:background .15s;font-family:inherit;border:none;cursor:pointer}
+.wa-cta:hover{background:#1ebd5a}
+.eshop-cta{display:block;text-align:center;width:100%;padding:12px;background:transparent;color:var(--accent);border:1.5px solid var(--accent);border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;margin-top:10px;font-family:inherit}
+.eshop-cta:hover{background:var(--accent-soft)}
+.summary-table{width:100%;font-size:14px}
+.summary-table tr td{padding:6px 0;border-bottom:1px dashed var(--border);vertical-align:top}
+.summary-table tr:last-child td{border-bottom:none}
+.summary-table td:first-child{color:var(--muted);width:40%}
+.summary-table td:last-child{font-weight:500}
+
+/* Footer */
+footer{padding:24px 20px;text-align:center;font-size:12px;color:var(--muted);border-top:1px solid var(--border);background:#fff}
+footer a{color:var(--accent);text-decoration:none}
+
+/* Loading */
+.loading{text-align:center;padding:40px 0}
+.spinner{display:inline-block;width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading p{margin-top:14px;color:var(--muted);font-size:14px}
+
+/* Submit status */
+.subm-status{margin-top:14px;padding:10px 12px;border-radius:6px;font-size:13px;display:none}
+.subm-status.ok{background:var(--accent-soft);color:var(--accent-dark);display:block}
+.subm-status.warn{background:#fef3c7;color:#92400e;display:block}
+.subm-status.err{background:#fee2e2;color:#991b1b;display:block}
+
+/* Consent */
+.consent{display:flex;align-items:start;gap:8px;font-size:12px;color:var(--muted);line-height:1.5;margin-top:14px;padding:10px;background:#f5f5f4;border-radius:6px}
+.consent input{width:auto;margin-top:3px;flex-shrink:0;accent-color:var(--accent)}
+.consent a{color:var(--accent)}
+
+/* Hidden */
+.hidden{display:none !important}
+
+/* Mobile */
+@media(max-width:480px){
+  .card{padding:24px 18px}
+  .card h1{font-size:20px}
+  .card .q{font-size:15px}
+  .opt .lbl{font-size:14px}
+  .progress-meta{font-size:11px}
+  header .logo-sub{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo">🌿 Fitline Italia</span>
+  <span class="logo-sub" id="header-cta">Mini-Assessment personalizzato</span>
+  <a href="landing.html">← Torna alla landing</a>
+</header>
+
+<main>
+<div class="wrap">
+
+  <!-- INTRO -->
+  <section id="intro" class="card">
+    <div class="intro-hero">
+      <div class="icon">📋</div>
+      <h1>Mini-Assessment personalizzato</h1>
+      <p>10 domande, 2 minuti. Output: il tuo percorso cucito addosso + 1 prodotto starter + consulenza 15min su WhatsApp.</p>
+    </div>
+    <div class="intro-bullets">
+      <ul>
+        <li>100% anonimo fino al passaggio WhatsApp</li>
+        <li>Nessun pagamento richiesto</li>
+        <li>Il tuo report è calcolato in locale, non lascia il tuo PC</li>
+        <li>Puoi abbandonare quando vuoi</li>
+      </ul>
+    </div>
+    <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="startAssessment()">Inizia (2 min) →</button>
+  </section>
+
+  <!-- PROGRESS + STEPS (hidden until start) -->
+  <section id="wizard" class="hidden">
+    <div class="progress">
+      <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:10%"></div></div>
+      <div class="progress-meta">
+        <span id="prog-text">Domanda 1 di 10</span>
+        <span id="prog-percent">10%</span>
+      </div>
+    </div>
+
+    <!-- STEP 1: Obiettivo -->
+    <div class="card step" data-step="1">
+      <div class="step-num">Domanda 1 di 10</div>
+      <h1>Il tuo obiettivo principale <small>Questo guida tutto il resto</small></h1>
+      <div class="q">Cosa vorresti migliorare per prima?</div>
+      <div class="options" data-name="obiettivo">
+        <label class="opt"><input type="radio" name="obiettivo" value="energia"><div><div class="lbl">Più energia e gestione dello stress</div><div class="sub">Crollo pomeridiano, sonno irregolare, mente annebbiata</div></div></label>
+        <label class="opt"><input type="radio" name="obiettivo" value="dimagrimento"><div><div class="lbl">Dimagrimento / ricomposizione corporea</div><div class="sub">Peso che non si muove, gonfiore, fame nervosa</div></div></label>
+        <label class="opt"><input type="radio" name="obiettivo" value="benessere"><div><div class="lbl">Benessere quotidiano e difese naturali</div><div class="sub">Supporto immunitario, vitalità, prevenzione</div></div></label>
+        <label class="opt"><input type="radio" name="obiettivo" value="dolori"><div><div class="lbl">Dolori articolari e mobilità</div><div class="sub">Ginocchia, schiena, rigidità, recuperi lenti</div></div></label>
+        <label class="opt"><input type="radio" name="obiettivo" value="inestetismi"><div><div class="lbl">Inestetismi (cellulite, ritenzione, pelle a buccia d'arancia)</div><div class="sub">Problemi circolatori, accumuli localizzati</div></div></label>
+        <label class="opt"><input type="radio" name="obiettivo" value="massa"><div><div class="lbl">Massa muscolare / performance sportiva</div><div class="sub">Forza, definizione, recupero post-allenamento</div></div></label>
+        <label class="opt"><input type="radio" name="obiettivo" value="pelle"><div><div class="lbl">Bellezza viso e pelle (skincare)</div><div class="sub">Pelle spenta, acne adulto, macchie, rughe precoci</div></div></label>
+      </div>
+      <div class="nav"><span></span><button class="btn btn-primary" onclick="next()" disabled id="btn-next-1">Avanti →</button></div>
+    </div>
+
+    <!-- STEP 2: Età -->
+    <div class="card step hidden" data-step="2">
+      <div class="step-num">Domanda 2 di 10</div>
+      <h1>La tua età <small>Per tarare il dosaggio</small></h1>
+      <div class="q">In che fascia d'età ti trovi?</div>
+      <div class="options" data-name="eta">
+        <label class="opt"><input type="radio" name="eta" value="18-29"><div class="lbl">18-29 anni</div></label>
+        <label class="opt"><input type="radio" name="eta" value="30-44"><div class="lbl">30-44 anni</div></label>
+        <label class="opt"><input type="radio" name="eta" value="45-59"><div class="lbl">45-59 anni</div></label>
+        <label class="opt"><input type="radio" name="eta" value="60+"><div class="lbl">60+ anni</div></label>
+      </div>
+      <div class="nav"><button class="btn btn-ghost" onclick="prev()">← Indietro</button><button class="btn btn-primary" onclick="next()" disabled id="btn-next-2">Avanti →</button></div>
+    </div>
+
+    <!-- STEP 3: Sesso biologico -->
+    <div class="card step hidden" data-step="3">
+      <div class="step-num">Domanda 3 di 10</div>
+      <h1>Sesso biologico <small>Per considerazioni ormonali (es. gravidanza, menopausa)</small></h1>
+      <div class="q">Ai fini del consiglio sugli integratori:</div>
+      <div class="options" data-name="sesso">
+        <label class="opt"><input type="radio" name="sesso" value="F"><div class="lbl">Femmina</div></label>
+        <label class="opt"><input type="radio" name="sesso" value="M"><div class="lbl">Maschio</div></label>
+        <label class="opt"><input type="radio" name="sesso" value="Altro"><div class="lbl">Altro / preferisco non specificare</div></label>
+      </div>
+      <div class="nav"><button class="btn btn-ghost" onclick="prev()">← Indietro</button><button class="btn btn-primary" onclick="next()" disabled id="btn-next-3">Avanti →</button></div>
+    </div>
+
+    <!-- STEP 4: Problema specifico -->
+    <div class="card step hidden" data-step="4">
+      <div class="step-num">Domanda 4 di 10</div>
+      <h1>Il tuo problema specifico <small>2 righe, parole tue</small></h1>
+      <div class="q">Descrivi il problema in 2 righe — non serve essere clinici, scrivi come lo spiegheresti a un amico</div>
+      <div class="help">Esempio: "Mi sveglio stanco anche dopo 8 ore, alle 15 crollo sul divano, e la sera non ho voglia di fare nulla."</div>
+      <textarea name="problema" id="problema" maxlength="400" placeholder="Scrivi qui..."></textarea>
+      <div class="help" style="text-align:right"><span id="problema-count">0</span>/400 caratteri</div>
+      <div class="nav"><button class="btn btn-ghost" onclick="prev()">← Indietro</button><button class="btn btn-primary" onclick="next()" id="btn-next-4">Avanti →</button></div>
+    </div>
+
+    <!-- STEP 5: Durata -->
+    <div class="card step hidden" data-step="5">
+      <div class="step-num">Domanda 5 di 10</div>
+      <h1>Da quanto tempo <small>Per capire se è un problema recente o cronico</small></h1>
+      <div class="q">Da quanto tempo persiste?</div>
+      <div class="options" data-name="durata">
+        <label class="opt"><input type="radio" name="durata" value="recente"><div class="lbl">Recente (meno di 1 mese)</div></label>
+        <label class="opt"><input type="radio" name="durata" value="1-6-mesi"><div class="lbl">1-6 mesi</div></label>
+        <label class="opt"><input type="radio" name="durata" value="6+-mesi"><div class="lbl">Più di 6 mesi</div></label>
+        <label class="opt"><input type="radio" name="durata" value="anni"><div class="lbl">Anni, è un problema cronico</div></label>
+      </div>
+      <div class="nav"><button class="btn btn-ghost" onclick="prev()">← Indietro</button><button class="btn btn-primary" onclick="next()" disabled id="btn-next-5">Avanti →</button></div>
+    </div>
+
+    <!-- STEP 6: Esperienza integratori -->
+    <div class="card step hidden" data-step="6">
+      <div class="step-num">Domanda 6 di 10</div>
+      <h1>Esperienza pregressa <small>Per tarare il punto di partenza</small></h1>
+      <div class="q">Hai già provato integratori in passato?</div>
+      <div class="options" data-name="esperienza">
+        <label class="opt"><input type="radio" name="esperienza" value="mai"><div><div class="lbl">Mai, sarebbe la prima volta</div></div></label>
+        <label class="opt"><input type="radio" name="esperienza" value="si-base"><div><div class="lbl">Sì, prodotti base della grande distribuzione</div><div class="sub">Multivitaminici, magnesio, ferro, ecc.</div></div></label>
+        <label class="opt"><input type="radio" name="esperienza" value="si-tech"><div><div class="lbl">Sì, prodotti tecnici/sportivi</div><div class="sub">Whey, creatina, BCAA, integratori specifici</div></div></label>
+        <label class="opt"><input type="radio" name="esperienza" value="si-no-effetto"><div><div class="lbl">Sì, ma non ho visto risultati</div><div class="sub">Ho provato ma non è cambiato nulla</div></div></label>
+      </div>
+      <div class="nav"><button class="btn btn-ghost" onclick="prev()">← Indietro</button><button class="btn btn-primary" onclick="next()" disabled id="btn-next-6">Avanti →</button></div>
+    </div>
+
+    <!-- STEP 7: Allergie -->
+    <div class="card step hidden" data-step="7">
+      <div class="step-num">Domanda 7 di 10</div>
+      <h1>Allergie o intolleranze <small>Importante per la sicurezza</small></h1>
+      <div class="q">Hai allergie o intolleranze note a ingredienti / alimenti / farmaci?</div>
+      <div class="options" data-name="allergie-flag">
+        <label class="opt"><input type="radio" name="allergie-flag" value="no"><div class="lbl">No, nessuna</div></label>
+        <label class="opt"><input type="radio" name="allergie-flag" value="si"><div><div class="lbl">Sì (specifica sotto)</div></div></label>
+      </div>
+      <textarea name="allergie" id="allergie" maxlength="200" placeholder="Se sì, scrivi quali (es. lattosio, glutine, nickel, caffeina, FANS, antibiotici specifici)..." style="margin-top:12px"></textarea>
+      <div class="nav"><button class="btn btn-ghost" onclick="prev()">← Indietro</button><button class="btn btn-primary" onclick="next()" id="btn-next-7">Avanti →</button></div>
+    </div>
+
+    <!-- STEP 8: Stile di vita -->
+    <div class="card step hidden" data-step="8">
+      <div class="step-num">Domanda 8 di 10</div>
+      <h1>Stile di vita <small>Per tarare i tempi e le combinazioni</small></h1>
+      <div class="q">Come descrivi il tuo stile di vita attuale?</div>
+      <div class="options" data-name="stile-vita">
+        <label class="opt"><input type="radio" name="stile-vita" value="sedentario"><div><div class="lbl">Sedentario</div><div class="sub">Poco movimento, ufficio, auto, divano</div></div></label>
+        <label class="opt"><input type="radio" name="stile-vita" value="moderato"><div><div class="lbl">Moderatamente attivo</div><div class="sub">30-60 min movimento 2-3 volte/settimana</div></div></label>
+        <label class="opt"><input type="radio" name="stile-vita" value="sportivo"><div><div class="lbl">Sportivo</div><div class="sub">3-5 sessioni/settimana strutturate</div></div></label>
+        <label class="opt"><input type="radio" name="stile-vita" value="agonista"><div><div class="lbl">Agonista / molto attivo</div><div class="sub">6+ sessioni, gare, performance</div></div></label>
+      </div>
+      <div class="nav"><button class="btn btn-ghost" onclick="prev()">← Indietro</button><button class="btn btn-primary" onclick="next()" disabled id="btn-next-8">Avanti →</button></div>
+    </div>
+
+    <!-- STEP 9: Budget -->
+    <div class="card step hidden" data-step="9">
+      <div class="step-num">Domanda 9 di 10</div>
+      <h1>Budget mensile <small>Per tarare la combo ottimale</small></h1>
+      <div class="q">Quanto sei disposto/a a investire al mese in un percorso personalizzato?</div>
+      <div class="options" data-name="budget">
+        <label class="opt"><input type="radio" name="budget" value="0-30"><div><div class="lbl">0-30 €/mese</div><div class="sub">Partiamo da un singolo prodotto entry-level</div></div></label>
+        <label class="opt"><input type="radio" name="budget" value="30-60"><div><div class="lbl">30-60 €/mese</div><div class="sub">Combo base: 1 prodotto specifico</div></div></label>
+        <label class="opt"><input type="radio" name="budget" value="60-130"><div><div class="lbl">60-130 €/mese</div><div class="sub">Combo ottimale: Power Cocktail Optimal-Set o TopShape</div></div></label>
+        <label class="opt"><input type="radio" name="budget" value="130+"><div><div class="lbl">130+ €/mese</div><div class="sub">Percorso completo, 2-3 prodotti combinati</div></div></label>
+      </div>
+      <div class="nav"><button class="btn btn-ghost" onclick="prev()">← Indietro</button><button class="btn btn-primary" onclick="next()" disabled id="btn-next-9">Avanti →</button></div>
+    </div>
+
+    <!-- STEP 10: Fonte -->
+    <div class="card step hidden" data-step="10">
+      <div class="step-num">Domanda 10 di 10</div>
+      <h1>Come ci sei arrivato/a? <small>Per capire dove migliorare la campagna</small></h1>
+      <div class="q">Come hai scoperto questa pagina?</div>
+      <div class="options" data-name="fonte">
+        <label class="opt"><input type="radio" name="fonte" value="ig"><div class="lbl">Instagram (DM o commento)</div></label>
+        <label class="opt"><input type="radio" name="fonte" value="fb"><div class="lbl">Facebook (gruppo o post)</div></label>
+        <label class="opt"><input type="radio" name="fonte" value="linkedin"><div class="lbl">LinkedIn</div></label>
+        <label class="opt"><input type="radio" name="fonte" value="whatsapp"><div class="lbl">WhatsApp (passaparola)</div></label>
+        <label class="opt"><input type="radio" name="fonte" value="google"><div class="lbl">Ricerca Google</div></label>
+        <label class="opt"><input type="radio" name="fonte" value="altro"><div class="lbl">Altro</div></label>
+      </div>
+      <div class="nav"><button class="btn btn-ghost" onclick="prev()">← Indietro</button><button class="btn btn-primary" onclick="showOutput()" id="btn-next-10">Vedi il mio percorso →</button></div>
+    </div>
+
+    <!-- LOADING -->
+    <div class="card step hidden" data-step="11">
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>Calcolo del tuo percorso personalizzato...</p>
+      </div>
+    </div>
+
+    <!-- OUTPUT MENTALISTA v2 -->
+    <div class="card step hidden" data-step="12">
+      <div class="step-num">Il tuo percorso personalizzato</div>
+
+      <!-- HERO MOTIVAZIONALE -->
+      <div class="rec-hero" id="rec-hero">
+        <div class="hero-icon" id="rec-icon">—</div>
+        <div class="rec-hero-eyebrow" id="rec-eyebrow">—</div>
+        <h2 id="rec-headline">—</h2>
+        <p class="lead" id="rec-lead">—</p>
+      </div>
+
+      <!-- BLOCCO PROBLEMA (vende l'agonia) -->
+      <div class="problem-block" id="rec-problem" style="display:none">
+        <strong>Quello che mi hai descritto</strong>
+        <span id="rec-problem-text"></span>
+      </div>
+
+      <!-- LISTA PRODOTTI CONSIGLIATI -->
+      <div class="section-title" id="rec-section-title">Il tuo protocollo essenziale</div>
+      <div class="product-list" id="rec-products">
+        <!-- popolato da JS -->
+      </div>
+
+      <!-- PERCHÉ PROPRIO QUESTI (mentalist copy) -->
+      <div class="why-box" id="rec-why-box">
+        <div class="why-box-title">🎯 Perché proprio questi per te</div>
+        <p id="rec-why">—</p>
+      </div>
+
+      <!-- UPGRADE BOX (solo per budget entry) -->
+      <div class="upgrade-box" id="rec-upgrade" style="display:none">
+        <div class="upgrade-box-title">⬆️ Quando vorrai fare il salto</div>
+        <p id="rec-upgrade-text">—</p>
+      </div>
+
+      <!-- BANNER SCONTO 24H -->
+      <div class="discount-banner" id="rec-discount">
+        <div class="db-eyebrow">⏰ 24H DEDICATE A TE</div>
+        <div class="db-title">Hai sbloccato uno sconto personale</div>
+        <div class="db-sub">Solo perché hai completato questo test, ho attivato per te <strong>uno sconto dedicato valido solo per le prossime 24 ore</strong>. Scrivimi su WhatsApp e te lo sblocco in 60 secondi.</div>
+      </div>
+
+      <div class="urgency-line">
+        <span class="dot"></span>
+        <span>Più di 50 persone hanno completato questo test questa settimana — l'accesso allo sconto è personale.</span>
+      </div>
+
+      <!-- CTA WHATSAPP -->
+      <div class="cta-section" style="margin-top:18px">
+        <div class="cta-title">Un ultimo passo per attivare il tuo percorso</div>
+        <div class="cta-sub">Scrivimi su WhatsApp con il riepilogo già pronto. 15 minuti, ti spiego come usare lo sconto, e vediamo insieme i dettagli del protocollo su misura per te.</div>
+        <a href="#" class="wa-cta" id="wa-link" target="_blank" rel="noopener">💬 Contattami su WhatsApp con il riepilogo</a>
+        <a href="#" class="eshop-cta" id="eshop-link" target="_blank" rel="noopener">Oppure esplora i prodotti nel mio eShop Fitline →</a>
+      </div>
+
+      <!-- RIEPILOGO RISPOSTE -->
+      <div class="output-section">
+        <h2>Riepilogo delle tue risposte</h2>
+        <div class="card">
+          <table class="summary-table" id="summary-table"></table>
+        </div>
+      </div>
+
+      <!-- PRIVACY / DESTINAZIONI -->
+      <div class="output-section">
+        <h2>Cosa succede ai tuoi dati</h2>
+        <div class="card" style="font-size:13px;color:var(--muted)">
+          <p>Le tue risposte sono state inviate al consulente per poterti ricontattare con il percorso personalizzato. Nessun dato viene condiviso con terze parti a fini marketing. Puoi richiedere cancellazione scrivendo "stop" o all'email del consulente.</p>
+          <div class="subm-status" id="subm-status"></div>
+        </div>
+      </div>
+
+      <div class="nav">
+        <button class="btn btn-ghost" onclick="restart()">↺ Ricomincia l'assessment</button>
+        <button class="btn btn-link" onclick="window.print()">🖨️ Stampa/Salva come PDF</button>
+      </div>
+    </div>
+
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Fitline Italia</strong> · Consulente indipendente · <a href="landing.html">Landing</a> · <a href="index.html">Report strategia</a></p>
+    <p style="margin-top:6px">Claim di benessere conformi al Reg. UE 1924/2006. <a href="#" onclick="alert('Privacy: i dati sono salvati in locale sul tuo browser e (se hai dato consenso) inviati al consulente via Google Sheets/email. Mai condivisi con terze parti.');return false;">Privacy</a></p>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script>
+// ============================================================================
+// STATO
+// ============================================================================
+const ANSWERS = {};  // popolato man mano
+let currentStep = 0;  // 0=intro, 1-10=questions, 11=loading, 12=output
+
+const TOTAL_STEPS = 10;
+
+// ============================================================================
+// PRE-FILL DA URL PARAMS (es. da landing form)
+// ============================================================================
+(function prefillFromURL(){
+  const p = new URLSearchParams(window.location.search);
+  if (p.get('obiettivo')) ANSWERS.obiettivo = p.get('obiettivo');
+  if (p.get('eta')) ANSWERS.eta = p.get('eta');
+  if (p.get('sesso')) ANSWERS.sesso = p.get('sesso');
+  if (p.get('durata')) ANSWERS.durata = p.get('durata');
+  if (p.get('esperienza')) ANSWERS.esperienza = p.get('esperienza');
+  if (p.get('allergie-flag')) ANSWERS['allergie-flag'] = p.get('allergie-flag');
+  if (p.get('stile-vita')) ANSWERS['stile-vita'] = p.get('stile-vita');
+  if (p.get('budget')) ANSWERS.budget = p.get('budget');
+  if (p.get('fonte')) ANSWERS.fonte = p.get('fonte');
+  if (p.get('problema')) ANSWERS.problema = p.get('problema');
+  if (p.get('allergie')) ANSWERS.allergie = p.get('allergie');
+})();
+
+// ============================================================================
+// NAVIGAZIONE
+// ============================================================================
+function startAssessment(){
+  // Se obiettivo è già pre-compilato da URL, salta direttamente alla domanda 1 con valore pre-selezionato
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('wizard').classList.remove('hidden');
+  currentStep = 1;
+  // Pre-seleziona i radio precompilati da URL
+  for (const k in ANSWERS){
+    const v = ANSWERS[k];
+    const radio = document.querySelector(`input[name="${k}"][value="${v}"]`);
+    if (radio){
+      radio.checked = true;
+      const opt = radio.closest('.opt');
+      if (opt) opt.classList.add('selected');
+      // Abilita il bottone Avanti di quello step
+      const stepCard = radio.closest('.step');
+      if (stepCard){
+        const nextBtn = stepCard.querySelector('.btn-primary');
+        if (nextBtn) nextBtn.disabled = false;
+      }
+    }
+  }
+  // Pre-fill textarea
+  if (ANSWERS.problema) document.getElementById('problema').value = ANSWERS.problema;
+  if (ANSWERS.allergie) document.getElementById('allergie').value = ANSWERS.allergie;
+  showStep(currentStep);
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function showStep(n){
+  document.querySelectorAll('.step').forEach(el => el.classList.add('hidden'));
+  const target = document.querySelector(`.step[data-step="${n}"]`);
+  if (target) target.classList.remove('hidden');
+  // Progress
+  if (n >= 1 && n <= 10){
+    const pct = Math.round((n / TOTAL_STEPS) * 100);
+    document.getElementById('prog-fill').style.width = pct + '%';
+    document.getElementById('prog-text').textContent = 'Domanda ' + n + ' di ' + TOTAL_STEPS;
+    document.getElementById('prog-percent').textContent = pct + '%';
+  } else {
+    document.getElementById('prog-fill').style.width = '100%';
+    document.getElementById('prog-text').textContent = 'Output';
+    document.getElementById('prog-percent').textContent = '100%';
+  }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function next(){
+  if (currentStep < TOTAL_STEPS){
+    currentStep++;
+    showStep(currentStep);
+  }
+}
+function prev(){
+  if (currentStep > 1){
+    currentStep--;
+    showStep(currentStep);
+  }
+}
+
+// ============================================================================
+// WIRING: abilita/disabilita "Avanti" in base alla selezione
+// ============================================================================
+document.addEventListener('change', e => {
+  // Radio
+  if (e.target.type === 'radio' && e.target.name){
+    // Memorizza risposta
+    ANSWERS[e.target.name] = e.target.value;
+    // Marca .opt selezionata
+    const opt = e.target.closest('.opt');
+    if (opt){
+      opt.parentElement.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+    }
+    // Abilita il bottone "Avanti" dello step corrente
+    const stepCard = e.target.closest('.step');
+    if (stepCard){
+      const nextBtn = stepCard.querySelector('.btn-primary');
+      if (nextBtn) nextBtn.disabled = false;
+    }
+  }
+});
+
+// Textarea (step 4 problema)
+document.addEventListener('input', e => {
+  if (e.target.id === 'problema'){
+    ANSWERS.problema = e.target.value.trim();
+    document.getElementById('problema-count').textContent = e.target.value.length;
+  }
+  if (e.target.id === 'allergie'){
+    ANSWERS.allergie = e.target.value.trim();
+  }
+});
+
+// ============================================================================
+// RACCOMANDAZIONE v2 — MENTALIST CATALOGO PRODOTTI PER OBIETTIVO × BUDGET
+// ============================================================================
+
+// Mappa budget scelto dall'utente -> tier
+// "0-30" o "30-60" -> "entry" (≤60€)
+// "60-130" o "130+" -> "combo" (>60€)
+function budgetTierFromAnswer(b){
+  if (b === '60-130' || b === '130+') return 'combo';
+  return 'entry';
+}
+
+// Prodotti: catalogo condiviso
+const PROD = {
+  activize: {
+    name: 'Activize Oxyplus',
+    icon: '⚡',
+    tag: 'Il tuo powerbank di energia personale',
+    desc: 'Vitamine del gruppo B, ossigena il sangue, riattiva il microcircolo. Aumenta la concentrazione e dà un\'energia pulita che dura ore. È come avere una powerbank di energia sempre con sé, senza i picchi e i crash del caffè.'
+  },
+  dDrink: {
+    name: 'D-Drink',
+    icon: '🧹',
+    tag: 'La pulizia profonda che il tuo corpo sta chiedendo',
+    desc: 'Depura l\'organismo da metalli pesanti e sostanze chimiche, supporta la funzionalità del fegato e metabolizza i macronutrienti. Una pulizia completa per far tornare in funzione il tuo corpo, soprattutto se vivi in città, fai farmaci o ti senti "intossicato".'
+  },
+  optimalSet: {
+    name: 'Optimal Set (Power Cocktail + Restorate)',
+    icon: '🔋',
+    tag: 'Il tasto ON e il tasto OFF della tua giornata',
+    desc: 'Power Cocktail al mattino è il tasto ON: accende energia, concentrazione, difese immunitarie e regolarità intestinale. Restorate alla sera è il tasto OFF: reintegra sali minerali ed elettroliti, velocizza la rigenerazione dei tessuti e migliora significativamente la qualità del sonno, così le cellule si rigenerano davvero di notte.'
+  },
+  antioxy: {
+    name: 'Antioxy',
+    icon: '🛡️',
+    tag: 'Lo scudo antiossidante che la tua pelle ti chiede',
+    desc: 'Antiossidante con selenio, zinco e rame. Riduce lo stress ossidativo delle cellule, supporta la pelle per l\'abbronzatura e rinforza le difese immunitarie. È il prodotto giusto se ti ammali spesso, vedi la pelle spenta o vivi situazioni di stress prolungato.'
+  },
+  restorate: {
+    name: 'Restorate',
+    icon: '🌙',
+    tag: 'Il tasto OFF che rigenera il tuo corpo mentre dormi',
+    desc: 'Reintegra sali minerali ed elettroliti dopo sforzi, caldo ed allenamento. Velocizza la rigenerazione dei tessuti per recuperare in meno tempo. Preso prima del sonno accompagna al riposo, migliora significativamente la qualità del sonno e rigenera le cellule, i tessuti e gli organi durante la notte.'
+  },
+  activeGel: {
+    name: 'Active Gel',
+    icon: '💆',
+    tag: 'Il sollievo immediato per i tuoi muscoli e le articolazioni',
+    desc: 'Gel topico ad azione rapida per muscoli e articolazioni. Eccezionale per dolori articolari e per il sollievo post-sforzo: lo applichi dove senti il fastidio e in pochi minuti il corpo riprende a muoversi come deve.'
+  },
+  artFitCombo: {
+    name: 'ArtFit Combo',
+    icon: '🦴',
+    tag: 'Articolazioni libere: la soluzione completa dentro e fuori',
+    desc: 'Combinazione per articolazioni con glucosamina e condroitina. La soluzione perfetta per agire dall\'interno e dall\'esterno contro i dolori articolari: nutre la cartilagine, riduce l\'infiammazione e ti fa tornare a muoverti senza pensare al dolore.'
+  },
+  cBalance: {
+    name: 'C-Balance',
+    icon: '⚖️',
+    tag: 'Il guardiano dei tuoi zuccheri nel sangue',
+    desc: 'Aiuta a metabolizzare i carboidrati e a mantenere normali i livelli di zucchero nel sangue. Se senti sbalzi di energia dopo i pasti, fame improvvisa o stai attento alla linea, C-Balance ti aiuta a stabilizzare il metabolismo glucidico.'
+  },
+  proshape: {
+    name: 'ProShape',
+    icon: '🥗',
+    tag: 'Il pasto completo in una bustina, senza glutine e senza zucchero',
+    desc: 'Sostituto pasto vegano, senza glutine, in 6 gusti diversi. Fornisce al corpo l\'apporto corretto di nutrienti equivalente a un pasto completo. Perfetto per chi vuole dimagrire senza rinunciare a nutrirsi davvero, o per chi corre e salta i pasti.'
+  },
+  topshape: {
+    name: 'TopShape',
+    icon: '🔥',
+    tag: 'Il freno naturale alla fame (anche quella nervosa)',
+    desc: 'Aiuta a metabolizzare in energia ciò che mangi e riduce in modo naturale il senso di fame, compresa quella nervosa da stress. Se mangi per noia, ansia o per compensare, TopShape ti aiuta a rompere il circolo e a usare il cibo come carburatore, non come valvola di sfogo.'
+  },
+  beauty: {
+    name: 'Beauty',
+    icon: '✨',
+    tag: 'Collagen drink che lavora dall\'interno',
+    desc: 'Bevanda al collagene con peptidi, biotina, zinco e vitamine che nutrono pelle, capelli e unghie dall\'interno. Risultato visibile in 4-6 settimane: pelle più compatta, capelli più forti, unghie che non si spezzano. È la skincare che bevi, e la differenza si vede.'
+  },
+  cellLotion: {
+    name: 'Cell Lotion',
+    icon: '🧴',
+    tag: 'La crema snellente per la pelle a buccia d\'arancia',
+    desc: 'Trattamento topico specifico per cellulite e ritenzione. Applicata con costanza sulle zone critiche, lavora in sinergia con il movimento e l\'idratazione per restituire tono e levigatezza alla pelle.'
+  },
+  cellCombo: {
+    name: 'Cell Combo',
+    icon: '💎',
+    tag: 'Il protocollo completo dentro+fuori contro gli inestetismi',
+    desc: 'Combinazione di prodotti specifici per affrontare cellulite e ritenzione a 360°: agisce sul microcircolo, sul drenaggio e sulla struttura del tessuto. Se hai provato di tutto e non hai mai visto risultati veri, è il momento di un protocollo vero, non di un\'altra crema.'
+  },
+  creatina: {
+    name: 'Creatina',
+    icon: '💪',
+    tag: 'Il carburante dei tuoi muscoli',
+    desc: 'La creatina è la molecola più studiata al mondo per la performance muscolare: aumenta forza, migliora il recupero tra le serie e supporta l\'ipertrofia. Nessun integratore sportivo ha la stessa quantità di evidenze scientifiche.'
+  },
+  amino: {
+    name: 'Amino',
+    icon: '🧬',
+    tag: 'I mattoni delle tue proteine, pronti all\'uso',
+    desc: 'Aminoacidi essenziali per supportare la sintesi proteica e il recupero muscolare. Da assumere prima e dopo l\'allenamento, sono ciò che trasforma il tuo lavoro in palestra in tessuto muscolare reale.'
+  },
+  proteine: {
+    name: 'Proteine (Isolate)',
+    icon: '🥛',
+    tag: 'Proteine del siero isolate, massimo rendimento',
+    desc: 'Proteine del siero isolate, il formato più puro e veloce da assimilare. Indispensabili per chiudere la finestra proteica post-allenamento e costruire massa magra di qualità.'
+  },
+  munogen: {
+    name: 'Munogen (opzionale)',
+    icon: '⚡',
+    tag: 'Il turbo contro stanchezza e affaticamento',
+    desc: 'Sostanze bioattive, fitonutrienti e aminoacidi che contribuiscono alla normale formazione di globuli rossi e di sangue. Diminuisce stanchezza e affaticamento. Opzionale ma utile in fasi di overtraining o quando i risultati in palestra si fermano.'
+  },
+  youngCare: {
+    name: 'Young Care (Foam + Peeling + Balance Cream)',
+    icon: '🌸',
+    tag: 'Il primo passo nella skincare, a livello altissimo',
+    desc: 'Linea entry level ma di altissimo livello qualitativo, per pelli giovani o per chi vuole avvicinarsi al mondo skincare a piccoli passi. Foam per la detersione, peeling viso che funge anche da maschera all\'argilla, balance cream che ristabilisce il giusto PH e la flora batterica, nutrendo intensamente per un effetto wow.'
+  }
+};
+
+// Tabelle per obiettivo × tier: lista prodotti
+const RECIPE = {
+  'energia': {
+    entry: ['activize', 'dDrink'],
+    combo: ['optimalSet', 'activize', 'dDrink']
+  },
+  'benessere': {
+    entry: ['antioxy', 'optimalSet'], // antioxy + upgrade a optimal set
+    combo: ['optimalSet', 'antioxy']
+  },
+  'dolori': {
+    entry: ['restorate', 'activeGel'],
+    combo: ['restorate', 'artFitCombo']
+  },
+  'dimagrimento': {
+    entry: ['cBalance', 'proshape'],
+    combo: ['topshape', 'cBalance', 'proshape', 'optimalSet']
+  },
+  'inestetismi': {
+    entry: ['beauty', 'cellLotion'],
+    combo: ['beauty', 'cellCombo']
+  },
+  'massa': {
+    entry: ['activize', 'creatina', 'amino'],
+    combo: ['activize', 'creatina', 'amino', 'proteine', 'munogen']
+  },
+  'pelle': {
+    entry: ['beauty', 'youngCare'],
+    combo: ['beauty', 'youngCare']
+  }
+};
+
+// Hero testuale per obiettivo (motiva, vende il problema, fa future pacing)
+const HERO = {
+  'energia': {
+    icon: '⚡',
+    eyebrow: 'Il tuo percorso verso più energia e lucidità',
+    headline: 'Bentornata chiarezza mentale e ore filate di energia pulita',
+    lead: 'Quel crollo delle 15, la mente annebbiata, il sonno che non ricarica — non sono "normali", sono segnali che il tuo corpo sta chiedendo un rifornimento mirato. Il protocollo che ho costruito per te lavora su due fronti: ossigenazione e concentrazione.'
+  },
+  'benessere': {
+    icon: '🛡️',
+    eyebrow: 'Il tuo scudo quotidiano per sentirti forte e in forma',
+    headline: 'Difese attive, vitalità costante, organismo che funziona come dovrebbe',
+    lead: 'Se ti ammali spesso, ti senti spossata o stai entrando in un periodo di stress prolungato, non è una questione di "essere giù" — è che il tuo corpo sta consumando più di quanto reintegra. Questo protocollo è progettato per invertire la rotta.'
+  },
+  'dolori': {
+    icon: '🦴',
+    eyebrow: 'Per tornare a muoverti senza pensarci',
+    headline: 'Addio rigidità, dolori che se ne vanno, articolazioni libere',
+    lead: 'Ogni giorno che convivi con quel dolore è un giorno in più in cui il tuo corpo si adatta muovendoti male. La buona notizia: agendo dentro e fuori, in 2-3 settimane puoi sentire la differenza. Ti spiego come.'
+  },
+  'dimagrimento': {
+    icon: '🔥',
+    eyebrow: 'Il tuo piano dimagrimento intelligente',
+    headline: 'Bruciare, non accumulare: il metabolismo che lavora per te',
+    lead: 'Dimagrire non è questione di volontà — è questione di metabolismo. Se il tuo non collabora, nessuna dieta ti salverà. Questo protocollo è pensato per riattivare la macchina, tagliare la fame nervosa e fare in modo che il cibo diventi carburante, non zavorra.'
+  },
+  'inestetismi': {
+    icon: '💎',
+    eyebrow: 'Pelle che cambia, corpo che si rimodella',
+    headline: 'Buccia d\'arancia addio: il protocollo dentro+fuori che funziona',
+    lead: 'Cellulite e ritenzione non sono colpa della pigrizia — sono un problema di microcircolo, drenaggio e tessuto connettivo. Questo protocollo agisce su tutti e tre i fronti, dall\'interno e dall\'esterno. I risultati veri iniziano a 4-6 settimane.'
+  },
+  'massa': {
+    icon: '💪',
+    eyebrow: 'Costruisci il fisico che vuoi, non quello che il caso ti dà',
+    headline: 'Massa, forza, recupero: tutto quello che ti manca per spaccare',
+    lead: 'Senza i mattoni giusti, il tuo allenamento produce fatica, non muscoli. Questo protocollo ti dà tutto ciò che serve: energia per allenarti, proteine per costruire, amminoacidi per recuperare, creatina per andare più pesante.'
+  },
+  'pelle': {
+    icon: '✨',
+    eyebrow: 'Pelle che si vede, dentro e fuori',
+    headline: 'La skincare vera: dentro con il collagene, fuori con il protocollo giusto',
+    lead: 'Le creme da sole non bastano se il tuo corpo non ha i mattoni per costruire collagene, elastina e acido ialuronico. Questo protocollo lavora su entrambi i fronti: nutre dall\'interno e tratta dall\'esterno. Risultato: pelle che si vede, in 4-6 settimane.'
+  }
+};
+
+// Copy "Perché proprio questi per te" per obiettivo × tier
+const WHY = {
+  'energia': {
+    entry: 'Activize e D-Drink sono i due prodotti che, partendo da un budget entry, attaccano la causa più profonda: microcircolo e drenaggio. Activize ti dà l\'ossigenazione e la lucidità mentale, D-Drink pulisce il terreno in modo che tutto il resto funzioni meglio. Insieme coprono il 70% dei casi di stanchezza cronica che vedo.',
+    combo: 'Con il budget combo vai all-in sul Sistema Optimal: Optimal Set (Power Cocktail + Restorate) come base multivitaminica quotidiana made in Germany con tecnologia NTC®, più Activize e D-Drink per il boost mirato. È il protocollo che uso anche per i manager che devono sostenere ritmi altissimi.'
+  },
+  'benessere': {
+    entry: 'Antioxy è lo scudo antiossidante che lavora a 360°: difese, pelle, energia cellulare. È il prodotto giusto per partire. Se dopo 4-6 settimane vuoi consolidare, il passo naturale è aggiungere l\'Optimal Set (Power Cocktail + Restorate): diventa la coppia perfetta per sostenere il tuo organismo a lungo termine.',
+    combo: 'Optimal Set come base multivitaminica quotidiana (Power Cocktail la mattina, Restorate la sera) + Antioxy come scudo antiossidante aggiuntivo. È la combo più equilibrata che ho in listino: sostenibile nel tempo, efficace su tutti i fronti del benessere.'
+  },
+  'dolori': {
+    entry: 'Restorate lavora dall\'interno: sali minerali, elettroliti, nutrienti che rigenerano i tessuti durante il sonno. Active Gel lavora dall\'esterno: lo applichi dove senti il fastidio, e in pochi minuti il sollievo arriva. È il kit perfetto per chi vuole muoversi meglio senza aspettare mesi.',
+    combo: 'Restorate per la rigenerazione notturna dei tessuti, ArtFit Combo per la nutrizione specifica delle articolazioni (glucosamina + condroitina). È il protocollo completo dentro-fuori per chi vuole risultati seri sulle articolazioni.'
+  },
+  'dimagrimento': {
+    entry: 'C-Balance stabilizza la risposta insulinica (così mangi meglio e non accumuli), ProShape è il sostituto pasto vegano e senza zucchero che ti permette di saltare un pasto senza rinunciare ai nutrienti. Insieme: il metabolismo riparte e la fame nervosa si attenua.',
+    combo: 'TopShape è il freno naturale della fame, C-Balance stabilizza gli zuccheri, ProShape copre i pasti critici, Optimal Set (PC + Restorate) chiude i buchi nutrizionali. È la combo completa per chi vuole dimagrire sul serio, non per chi vuole "provare per due settimane".'
+  },
+  'inestetismi': {
+    entry: 'Beauty nutre pelle e tessuti dall\'interno (collagene, peptidi, biotina), Cell Lotion lavora dall\'esterno sulle zone critiche. È il duo perfetto per iniziare: agisce dentro e fuori, senza appesantirti con troppi prodotti.',
+    combo: 'Beauty come trattamento quotidiano interno + Cell Combo come protocollo specifico esterno per cellulite e ritenzione. È il kit completo per chi ha provato di tutto e vuole finalmente un approccio strutturato, non l\'ennesima crema.'
+  },
+  'massa': {
+    entry: 'Activize ti dà l\'energia per allenarti al massimo, Creatina e Amminoacidi sono i due pilastri della performance muscolare. Sono i tre prodotti che, da soli, fanno la differenza tra un allenamento "ci provi" e un allenamento "spingi davvero".',
+    combo: 'Activize per l\'energia pre-workout, Creatina per forza e recupero, Amminoacidi per la sintesi proteica, Proteine Isolate per chiudere la finestra post-allenamento. Munogen è il turbo opzionale per chi è in overtraining o ha bisogno di un boost di energia. È la combo completa per chi vuole costruire massa di qualità.'
+  },
+  'pelle': {
+    entry: 'Beauty è il collagene drink che nutre la pelle dall\'interno (4-6 settimane per vedere i primi risultati veri). La linea Young Care è il protocollo skincare 3-step entry level: detersione, peeling/maschera, balance cream. Insieme: dentro e fuori, senza appesantire.',
+    combo: 'Beauty per la base interna (collagene + peptidi), linea Young Care per la skincare esterna quotidiana. Se il tuo caso ha esigenze specifiche (macchie, rughe, acne adulto), in consulenza scegliamo i prodotti skincare mirati da aggiungere al kit.'
+  }
+};
+
+// Upgrade box (solo per tier=entry)
+const UPGRADE = {
+  'energia': 'Quando vorrai fare il salto di qualità, il <strong>Natural Optimal-Set (Power Cocktail + Restorate)</strong> è la mossa successiva: diventa la base multivitaminica quotidiana su cui costruire il tuo benessere, made in Germany con 30+ anni di ricerca.',
+  'benessere': 'Quando vorrai consolidare il percorso, il <strong>Natural Optimal-Set (Power Cocktail + Restorate)</strong> è il passo naturale: Power Cocktail al mattino accende, Restorate la sera rigenera. Insieme creano la base quotidiana del tuo benessere.',
+  'dolori': 'Quando vorrai lavorare in modo ancora più mirato sulle articolazioni, <strong>ArtFit Combo</strong> (glucosamina + condroitina) è la mossa successiva: nutre la cartilagine dall\'interno e completa il protocollo.',
+  'dimagrimento': 'Quando vorrai accelerare, <strong>TopShape</strong> (il freno naturale della fame nervosa) + <strong>Optimal Set</strong> (la base multivitaminica che ti tiene in energia anche a calorie ridotte) sono i prossimi due step naturali.',
+  'inestetismi': 'Quando vorrai un protocollo esterno più strutturato, <strong>Cell Combo</strong> è la mossa successiva: lavora su microcircolo, drenaggio e tessuto in modo sinergico con Beauty.',
+  'massa': 'Quando vorrai chiudere la finestra post-workout, <strong>Proteine Isolate</strong> + <strong>Munogen</strong> (opzionale, per overtraining) sono i prossimi step naturali.',
+  'pelle': 'Quando vorrai una skincare ancora più mirata (anti-age, macchie, acne adulto), in consulenza scegliamo i <strong>prodotti skincare coreani specifici</strong> da aggiungere alla linea Young Care.'
+};
+
+function generateRecommendation(a){
+  const tier = budgetTierFromAnswer(a.budget);
+  const hero = HERO[a.obiettivo] || HERO['energia'];
+  const productKeys = (RECIPE[a.obiettivo] && RECIPE[a.obiettivo][tier]) || RECIPE['energia'].entry;
+  const products = productKeys.map(k => PROD[k]);
+  const why = (WHY[a.obiettivo] && WHY[a.obiettivo][tier]) || '';
+  const upgrade = (tier === 'entry' && UPGRADE[a.obiettivo]) ? UPGRADE[a.obiettivo] : null;
+  return {
+    goal: a.obiettivo,
+    budgetTier: tier,
+    icon: hero.icon,
+    eyebrow: hero.eyebrow,
+    headline: hero.headline,
+    lead: hero.lead,
+    products: products,
+    why: why,
+    upgrade: upgrade,
+    discount: 'Sconto dedicato 24h attivo'
+  };
+}
+
+function labelFor(key, val){
+  const labels = {
+    obiettivo: {'energia':'Energia/stress', 'dimagrimento':'Dimagrimento', 'benessere':'Benessere/difese', 'dolori':'Articolazioni', 'inestetismi':'Inestetismi', 'massa':'Massa/performance', 'pelle':'Pelle/skincare'},
+    eta: {'18-29':'18-29', '30-44':'30-44', '45-59':'45-59', '60+':'60+'},
+    sesso: {'F':'Femmina', 'M':'Maschio', 'Altro':'Altro'},
+    durata: {'recente':'Recente (<1 mese)', '1-6-mesi':'1-6 mesi', '6+-mesi':'>6 mesi', 'anni':'Cronico (anni)'},
+    esperienza: {'mai':'Mai', 'si-base':'Sì, base GDO', 'si-tech':'Sì, tecnici/sportivi', 'si-no-effetto':'Sì, no risultati'},
+    'stile-vita': {'sedentario':'Sedentario', 'moderato':'Moderato', 'sportivo':'Sportivo', 'agonista':'Agonista'},
+    budget: {'0-30':'0-30 €/mese', '30-60':'30-60 €/mese', '60-130':'60-130 €/mese', '130+':'130+ €/mese'},
+    fonte: {'ig':'Instagram', 'fb':'Facebook', 'linkedin':'LinkedIn', 'whatsapp':'WhatsApp', 'google':'Google', 'altro':'Altro'}
+  };
+  return (labels[key] && labels[key][val]) || val || '—';
+}
+
+function buildSummaryTable(){
+  const rows = [
+    ['Obiettivo', labelFor('obiettivo', ANSWERS.obiettivo)],
+    ['Età', labelFor('eta', ANSWERS.eta)],
+    ['Sesso biologico', labelFor('sesso', ANSWERS.sesso)],
+    ['Problema', ANSWERS.problema || '—'],
+    ['Da quanto tempo', labelFor('durata', ANSWERS.durata)],
+    ['Esperienza integratori', labelFor('esperienza', ANSWERS.esperienza)],
+    ['Allergie', (ANSWERS['allergie-flag'] === 'si' ? (ANSWERS.allergie || 'sì, non specificate') : 'Nessuna')],
+    ['Stile di vita', labelFor('stile-vita', ANSWERS['stile-vita'])],
+    ['Budget', labelFor('budget', ANSWERS.budget)],
+    ['Fonte', labelFor('fonte', ANSWERS.fonte)]
+  ];
+  return rows.map(([k,v]) => `<tr><td>${escapeHTML(k)}</td><td>${escapeHTML(v)}</td></tr>`).join('');
+}
+
+function escapeHTML(s){
+  return (s||'').toString().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// ============================================================================
+// OUTPUT + INVIO MULTI-DESTINAZIONE
+// ============================================================================
+function showOutput(){
+  // Validate
+  if (!ANSWERS.obiettivo || !ANSWERS.eta || !ANSWERS.sesso || !ANSWERS.durata || !ANSWERS.esperienza || !ANSWERS['stile-vita'] || !ANSWERS.budget || !ANSWERS.fonte){
+    alert('Per favore completa tutte le domande prima di vedere il percorso.');
+    return;
+  }
+  if (!ANSWERS.problema || ANSWERS.problema.length < 10){
+    alert('Per favore descrivi il tuo problema in almeno 10 caratteri (è la domanda più importante per personalizzare il consiglio).');
+    return;
+  }
+
+  currentStep = 11;
+  showStep(11);
+
+  // Generate rec
+  const rec = generateRecommendation(ANSWERS);
+
+  // Hero
+  document.getElementById('rec-icon').textContent = rec.icon;
+  document.getElementById('rec-eyebrow').textContent = rec.eyebrow;
+  document.getElementById('rec-headline').textContent = rec.headline;
+  document.getElementById('rec-lead').textContent = rec.lead;
+
+  // Problema utente (se scritto, lo mostriamo per chiudere il loop e vendere il problema)
+  if (ANSWERS.problema && ANSWERS.problema.trim().length > 0){
+    document.getElementById('rec-problem').style.display = 'block';
+    document.getElementById('rec-problem-text').textContent = '"' + ANSWERS.problema.trim() + '"';
+  }
+
+  // Products list
+  const productsHTML = rec.products.map(p => `
+    <div class="product-card">
+      <div class="product-icon">${p.icon}</div>
+      <div class="product-body">
+        <div class="product-name">${escapeHTML(p.name)}</div>
+        <div class="product-tag">${escapeHTML(p.tag)}</div>
+        <div class="product-desc">${escapeHTML(p.desc)}</div>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('rec-products').innerHTML = productsHTML;
+
+  // Why box
+  document.getElementById('rec-why').textContent = rec.why;
+
+  // Upgrade box (solo se presente)
+  if (rec.upgrade){
+    document.getElementById('rec-upgrade').style.display = 'block';
+    document.getElementById('rec-upgrade-text').innerHTML = rec.upgrade;
+  } else {
+    document.getElementById('rec-upgrade').style.display = 'none';
+  }
+
+  // Section title cambia in base al tier
+  const sectionTitle = rec.budgetTier === 'combo' ? 'Il tuo protocollo completo' : 'Il tuo protocollo essenziale';
+  document.getElementById('rec-section-title').textContent = sectionTitle;
+
+  // Summary
+  document.getElementById('summary-table').innerHTML = buildSummaryTable();
+
+  // Build WhatsApp message
+  const CFG = window.FITLINE_CONFIG;
+  const productsList = rec.products.map(p => '• ' + p.name).join('\n');
+  const tierLabel = rec.budgetTier === 'combo' ? 'Combo completa' : 'Entry essenziale';
+  const waMsg =
+`Ciao ${CFG.consultantName}! 👋
+
+Ho appena completato il mini-assessment di 10 domande sul tuo eShop Fitline.
+
+🎯 *Il mio obiettivo:* ${labelFor('obiettivo', ANSWERS.obiettivo)}
+
+📋 *Riepilogo rapido:*
+• Età: ${labelFor('eta', ANSWERS.eta)}
+• Sesso: ${labelFor('sesso', ANSWERS.sesso)}
+• Problema: ${ANSWERS.problema}
+• Da quanto tempo: ${labelFor('durata', ANSWERS.durata)}
+• Esperienza integratori: ${labelFor('esperienza', ANSWERS.esperienza)}
+• Allergie: ${ANSWERS['allergie-flag'] === 'si' ? (ANSWERS.allergie || 'sì') : 'Nessuna'}
+• Stile di vita: ${labelFor('stile-vita', ANSWERS['stile-vita'])}
+• Budget: ${labelFor('budget', ANSWERS.budget)}
+
+💡 *Percorso personalizzato (${tierLabel}):*
+${productsList}
+
+⏰ *Ho visto che ho diritto a uno sconto dedicato valido 24h* — me lo sbloccavi?
+
+Quando hai 15 minuti, possiamo vederlo insieme?
+
+— ${CFG.consultantName}, Fitline Italia`;
+
+  document.getElementById('wa-link').href = CFG.waLink(waMsg);
+  document.getElementById('eshop-link').href = CFG.eShopUrl;
+
+  // Submit to all destinations in parallel
+  submitAll(waMsg, rec).then(results => {
+    const statusEl = document.getElementById('subm-status');
+    const ok = results.filter(r => r.ok).length;
+    const total = results.length;
+    if (ok === total){
+      statusEl.className = 'subm-status ok';
+      statusEl.textContent = '✓ Dati salvati in ' + ok + ' destinazioni (' + results.map(r => r.label).join(', ') + '). Il consulente ti contatterà presto.';
+    } else if (ok > 0){
+      statusEl.className = 'subm-status warn';
+      statusEl.textContent = '⚠ Dati salvati in ' + ok + '/' + total + ' destinazioni. Le altre hanno fallito ma il riepilogo WhatsApp funziona comunque.';
+    } else {
+      statusEl.className = 'subm-status err';
+      statusEl.textContent = '⚠ Salvataggio locale OK ma l\'invio al consulente non è andato a buon fine. Contattami direttamente su WhatsApp con il riepilogo sopra.';
+    }
+  });
+
+  // Show output
+  setTimeout(() => {
+    currentStep = 12;
+    showStep(12);
+  }, 600);
+}
+
+async function submitAll(waMsg, rec){
+  const CFG = window.FITLINE_CONFIG;
+  const payload = {
+    timestamp: new Date().toISOString(),
+    source: 'assessment',
+    answers: ANSWERS,
+    recommendation: rec,
+    whatsapp_message: waMsg,
+    user_agent: navigator.userAgent.substring(0, 200)
+  };
+
+  const results = [];
+
+  // 1) localStorage (always)
+  try {
+    const history = JSON.parse(localStorage.getItem('fitline_assessments') || '[]');
+    history.push(payload);
+    localStorage.setItem('fitline_assessments', JSON.stringify(history));
+    results.push({label: 'localStorage', ok: true});
+  } catch(e){
+    results.push({label: 'localStorage', ok: false, err: e.message});
+  }
+
+  // 2) Google Sheets via Apps Script
+  if (CFG.destinations.googleSheets.enabled && CFG.destinations.googleSheets.url){
+    try {
+      await fetch(CFG.destinations.googleSheets.url, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type': 'text/plain'},
+        body: JSON.stringify(payload)
+      });
+      // Note: with mode:no-cors, response is opaque. We assume success.
+      results.push({label: CFG.destinations.googleSheets.label, ok: true});
+    } catch(e){
+      results.push({label: CFG.destinations.googleSheets.label, ok: false, err: e.message});
+    }
+  } else {
+    results.push({label: 'Google Sheets (disabilitato — segui INSTRUCTIONS.md per attivare)', ok: true, skipped: true});
+  }
+
+  // 3) Formspree
+  if (CFG.destinations.formspree.enabled && CFG.destinations.formspree.url){
+    try {
+      const formData = new FormData();
+      for (const k in payload){
+        formData.append(k, typeof payload[k] === 'object' ? JSON.stringify(payload[k]) : payload[k]);
+      }
+      const resp = await fetch(CFG.destinations.formspree.url, {
+        method: 'POST',
+        body: formData,
+        headers: {'Accept': 'application/json'}
+      });
+      if (resp.ok) results.push({label: CFG.destinations.formspree.label, ok: true});
+      else results.push({label: CFG.destinations.formspree.label, ok: false, err: 'HTTP ' + resp.status});
+    } catch(e){
+      results.push({label: CFG.destinations.formspree.label, ok: false, err: e.message});
+    }
+  } else {
+    results.push({label: 'Formspree (disabilitato — segui INSTRUCTIONS.md per attivare)', ok: true, skipped: true});
+  }
+
+  return results;
+}
+
+function restart(){
+  for (const k in ANSWERS) delete ANSWERS[k];
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('input[type=radio]').forEach(r => r.checked = false);
+  document.getElementById('problema').value = '';
+  document.getElementById('allergie').value = '';
+  document.getElementById('problema-count').textContent = '0';
+  document.querySelectorAll('.step').forEach(el => el.classList.add('hidden'));
+  document.getElementById('intro').classList.remove('hidden');
+  document.getElementById('wizard').classList.add('hidden');
+  document.getElementById('prog-fill').style.width = '0%';
+  currentStep = 0;
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>
